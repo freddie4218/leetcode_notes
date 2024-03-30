@@ -16,7 +16,7 @@ Two types of tree traversal:
 #         self.right = right
 ```
 ### DFS - Recursion
-Pre-order:
+Pre-Order:
 ```
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
@@ -30,7 +30,7 @@ class Solution:
         preOrder(root)
         return result
 ```
-In-order:
+In-Order:
 ```
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
@@ -44,7 +44,7 @@ class Solution:
         inOrder(root)
         return result
 ```
-Post-order:
+Post-Order:
 ```
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
@@ -60,4 +60,63 @@ class Solution:
 ```
 
 ### DFS - Iteration
-Pre-order
+Pre-Order:
+
+```
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
+        result = []
+        stack = [root]
+        while stack:
+            root = stack.pop()
+            result.append(root.val)
+            if root.left:
+                stack.append(root.left)
+            if root.right:
+                stack.append(root.right)
+        return result
+```
+In-Order
+```
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        stack = []
+        res = []
+        
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            res.append(root.val)
+            root = root.right
+        return res
+```
+Post-Order:
+```
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack = []
+        res = []
+        prev = None
+        
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if not root.right or prev == root.right:
+                res.append(root.val)
+                prev = root
+                root = None
+            else:
+                stack.append(root)
+                prev = root
+                root = root.right
+        return res
+```
