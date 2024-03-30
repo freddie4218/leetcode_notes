@@ -8,16 +8,16 @@ Two types of tree traversal:
 2. BFS
 
 ### Definition for a binary tree node
-'''
+```
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-'''
+```
 ### DFS - Recursion
 Pre-order:
-'''
+```
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         result = []
@@ -29,9 +29,9 @@ class Solution:
             preOrder(root.right)
         preOrder(root)
         return result
-'''
+```
 In-order:
-'''
+```
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         result = []
@@ -43,9 +43,9 @@ class Solution:
             inOrder(root.right)
         inOrder(root)
         return result
-'''
+```
 Post-order:
-'''
+```
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         result = []
@@ -57,7 +57,7 @@ class Solution:
             result.append(root.val)
         postOrder(root)
         return result
-'''
+```
 
 ### DFS - Iteration
 Pre-order
