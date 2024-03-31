@@ -120,3 +120,27 @@ class Solution:
                 root = root.right
         return res
 ```
+### BFS - Iteration:
+
+
+```
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        queue = [root]
+        res = []
+        
+        while queue:
+            size = len(queue)
+            level = []
+            for _ in range(size):
+                curr = queue.pop(0)
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+                level.append(curr.val)
+            res.append(level)
+        return res
+```
